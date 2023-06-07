@@ -1,29 +1,20 @@
-const CheckList = (props: { texts: string[] }) => {
+interface IProps {
+  texts: string[];
+}
+
+const CheckList = ({ texts }: IProps) => {
   return (
     <div>
-      <div className="flex items-center">
-        <img
-          src={require("../../assets/images/icon-list.jpg")}
-          className="img-icon"
-        />
-        <p className="mx-3">{props.texts[0]}</p>
-      </div>
-
-      <div className="flex items-center">
-        <img
-          src={require("../../assets/images/icon-list.jpg")}
-          className="img-icon"
-        />
-        <p className="mx-3">{props.texts[1]}</p>
-      </div>
-
-      <div className="flex items-center">
-        <img
-          src={require("../../assets/images/icon-list.jpg")}
-          className="img-icon"
-        />
-        <p className="mx-3">{props.texts[2]}</p>
-      </div>
+      {texts.map((item: string) => (
+        <div className="flex items-center">
+          <img
+            src={require("../../assets/images/icon-list.jpg")}
+            alt="check-icon"
+            className="img-icon"
+          />
+          <p className="mx-3">{item}</p>
+        </div>
+      ))}
     </div>
   );
 };

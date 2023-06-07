@@ -33,6 +33,7 @@ const Home = () => {
         <div className="flex justify-end">
           <img
             src={require("../../assets/images/illustration-sign-up-desktop.jpg")}
+            alt="illustration-sign-up-desktop"
           />
         </div>
       </div>
