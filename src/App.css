@@ -11,11 +11,6 @@
   width: 80%;
   border-radius: 20px;
   padding: 20px;
-
-  .img-card {
-    width: 100%;
-    height: auto;
-  }
 }
 
 h1 {
@@ -26,4 +21,12 @@ h1 {
 .bg-btn {
   background-color: hsl(234, 29%, 20%);
   font-size: 14px;
+}
+
+.bg-btn:hover {
+  background-image: linear-gradient(to right, #fb547a, #fe673e);
+}
+
+.img-icon {
+  height: 18px;
 }

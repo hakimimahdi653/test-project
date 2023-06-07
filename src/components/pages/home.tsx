@@ -30,10 +30,9 @@ const Home = () => {
           </div>
           <Button title="Subscribe to monthly newsletter" />
         </div>
-        <div>
+        <div className="flex justify-end">
           <img
-            src="../../assets/images/illustration-sign-up-desktop.svg"
-            className="img-card"
+            src={require("../../assets/images/illustration-sign-up-desktop.jpg")}
           />
         </div>
       </div>
