@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import CheckList from "../common/check-list";
 import Button from "../common/button";
 import Input from "../common/input";
+import Modal from "../common/modal";
 
 const Home = () => {
   const texts: string[] = [
@@ -8,6 +10,16 @@ const Home = () => {
     "Measuring to ensure updates are a success",
     "And much more!",
   ];
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="app content-center">
@@ -18,8 +30,18 @@ const Home = () => {
             join 60,000+ product managers receiving monthly updates on :
           </p>
           <CheckList texts={texts} />
-          <Input type="text" label="Email address" placeholder="email@company.com"/>
-          <Button title="Subscribe to monthly newsletter" />
+          <Input
+            type="text"
+            label="Email address"
+            placeholder="email@company.com"
+          />
+          <div className="md:w-2/3">
+            <Button
+              title="Subscribe to monthly newsletter"
+              onClick={openModal}
+            />
+          </div>
+          <Modal email="sdsds" isOpen={isOpen} onClose={closeModal}></Modal>
         </div>
         <div className="flex justify-end">
           <img
