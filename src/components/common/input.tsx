@@ -22,17 +22,28 @@ const Input: React.FC<IProps> = ({ type, label, placeholder }) => {
 
   return (
     <div className="w-full md:w-2/3 mt-7">
-      <label className="block tracking-wide text-gray-700 text-xs font-bold mb-2">
-        {label}
-      </label>
+      <div className="flex justify-between">
+        <label className="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+          {label}
+        </label>
+        {!isValid && (
+          <span style={{ color: "red", fontSize: 12 }}>
+            Valid email required
+          </span>
+        )}
+      </div>
       <input
         type={type}
         value={email}
         onChange={handleInputChange}
-        className="appearance-none block w-full text-gray-700 border border-gray-200 rounded-md py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className={
+          "appearance-none block w-full border rounded-md py-4 px-4 leading-tight focus:outline-none focus:bg-white" +
+          (isValid
+            ? "text-gray-700 border-gray-200 focus:border-gray-500"
+            : "text-red-800 border-red-300 focus:border-red-500")
+        }
         placeholder={placeholder}
       />
-      {!isValid && <span style={{ color: "red", fontSize: 12 }}>Invalid email address</span>}
     </div>
   );
 };
