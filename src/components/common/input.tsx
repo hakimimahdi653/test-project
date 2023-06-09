@@ -5,15 +5,20 @@ interface IProps {
   label?: string;
   placeholder?: string;
   onChildData: any;
+  validate?: any;
 }
 
-const Input: React.FC<IProps> = ({ type, label, placeholder, onChildData }) => {
-  const [email, setEmail] = useState("");
+const Input: React.FC<IProps> = ({
+  type,
+  label,
+  placeholder,
+  onChildData,
+  validate,
+}) => {
   const [isValid, setIsValid] = useState(true);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    setEmail(inputValue);
 
     // Validate email
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -37,7 +42,10 @@ const Input: React.FC<IProps> = ({ type, label, placeholder, onChildData }) => {
       </div>
       <input
         type={type}
-        value={email}
+        {...validate("email", {
+          required: true,
+          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        })}
         onChange={handleInputChange}
         className={
           "appearance-none block w-full border rounded-md py-4 px-4 leading-tight focus:outline-none focus:bg-white" +

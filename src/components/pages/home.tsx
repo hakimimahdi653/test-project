@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import CheckList from "../common/check-list";
 import Button from "../common/button";
 import Input from "../common/input";
@@ -13,6 +14,8 @@ const Home = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
+
+  const { register, handleSubmit } = useForm();
 
   const openModal = () => {
     setIsOpen(true);
@@ -35,18 +38,18 @@ const Home = () => {
             join 60,000+ product managers receiving monthly updates on :
           </p>
           <CheckList texts={texts} />
-          <Input
-            type="text"
-            label="Email address"
-            placeholder="email@company.com"
-            onChildData={handleShowEmailInModal}
-          />
-          <div className="md:w-2/3">
-            <Button
-              title="Subscribe to monthly newsletter"
-              onClick={openModal}
+          <form onSubmit={handleSubmit(openModal)}>
+            <Input
+              type="text"
+              label="Email address"
+              placeholder="email@company.com"
+              onChildData={handleShowEmailInModal}
+              validate={register}
             />
-          </div>
+            <div className="md:w-2/3">
+              <Button title="Subscribe to monthly newsletter" />
+            </div>
+          </form>
           <Modal email={email} isOpen={isOpen} onClose={closeModal}></Modal>
         </div>
         <div className="flex justify-end">

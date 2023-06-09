@@ -5,11 +5,12 @@ interface IProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: React.FC<IProps> = ({ title, onClick }) => {
+const Button: React.FC<IProps> = ({ title, onClick, ...rest }) => {
   return (
     <button
       onClick={onClick}
       className="w-full mt-5 text-white py-3 rounded-md bg-btn"
+      {...rest}
     >
       {title}
     </button>
