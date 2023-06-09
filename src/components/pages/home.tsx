@@ -12,6 +12,7 @@ const Home = () => {
   ];
 
   const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState("");
 
   const openModal = () => {
     setIsOpen(true);
@@ -19,6 +20,10 @@ const Home = () => {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const handleShowEmailInModal = (email: string) => {
+    setEmail(email);
   };
 
   return (
@@ -34,6 +39,7 @@ const Home = () => {
             type="text"
             label="Email address"
             placeholder="email@company.com"
+            onChildData={handleShowEmailInModal}
           />
           <div className="md:w-2/3">
             <Button
@@ -41,7 +47,7 @@ const Home = () => {
               onClick={openModal}
             />
           </div>
-          <Modal email="sdsds" isOpen={isOpen} onClose={closeModal}></Modal>
+          <Modal email={email} isOpen={isOpen} onClose={closeModal}></Modal>
         </div>
         <div className="flex justify-end">
           <img

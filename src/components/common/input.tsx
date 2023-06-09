@@ -4,9 +4,10 @@ interface IProps {
   type: string;
   label?: string;
   placeholder?: string;
+  onChildData: any;
 }
 
-const Input: React.FC<IProps> = ({ type, label, placeholder }) => {
+const Input: React.FC<IProps> = ({ type, label, placeholder, onChildData }) => {
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
 
@@ -19,7 +20,7 @@ const Input: React.FC<IProps> = ({ type, label, placeholder }) => {
     const isValidEmail = emailRegex.test(inputValue);
     setIsValid(isValidEmail);
 
-    return inputValue;
+    onChildData(inputValue);
   };
 
   return (

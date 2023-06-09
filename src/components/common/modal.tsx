@@ -27,8 +27,10 @@ const Modal: React.FC<IProps> = ({ isOpen, onClose, children, email }) => {
           Thanks for subscribing!
         </h1>
         <p style={{ fontSize: 12 }}>
-          A confirmation email has been sent to {email}. Please open it and
-          click the button inside to confrim your subscription.
+          A confirmation email has been sent to
+          <span style={{ fontWeight: 700, marginLeft: 3 }}>{email}</span>.
+          Please open it and click the button inside to confrim your
+          subscription.
         </p>
         {children}
         <div className="flex items-center justify-center">
