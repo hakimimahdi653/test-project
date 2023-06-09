@@ -6,7 +6,7 @@ const CheckList = ({ texts }: IProps) => {
   return (
     <div>
       {texts.map((item: string) => (
-        <div className="flex items-center">
+        <div className="flex items-center" key={item}>
           <img
             src={require("../../assets/images/icon-list.jpg")}
             alt="check-icon"
