@@ -32,7 +32,7 @@ const Input: React.FC<IProps> = ({ type, label, placeholder }) => {
         className="appearance-none block w-full text-gray-700 border border-gray-200 rounded-md py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         placeholder={placeholder}
       />
-      {!isValid && <span style={{ color: "red" }}>Invalid email address</span>}
+      {!isValid && <span style={{ color: "red", fontSize: 12 }}>Invalid email address</span>}
     </div>
   );
 };
