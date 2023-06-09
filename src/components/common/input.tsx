@@ -8,13 +8,7 @@ interface IProps {
   validate?: any;
 }
 
-const Input: React.FC<IProps> = ({
-  type,
-  label,
-  placeholder,
-  onChildData,
-  validate,
-}) => {
+const Input: React.FC<IProps> = ({ label, onChildData, validate, ...rest }) => {
   const [isValid, setIsValid] = useState(true);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +35,7 @@ const Input: React.FC<IProps> = ({
         )}
       </div>
       <input
-        type={type}
+        {...rest}
         {...validate("email", {
           required: true,
           pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -53,7 +47,6 @@ const Input: React.FC<IProps> = ({
             ? "text-gray-700 border-gray-200 focus:border-gray-500"
             : "text-red-800 border-red-300 focus:border-red-500 bg-red")
         }
-        placeholder={placeholder}
       />
     </div>
   );
